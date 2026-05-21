@@ -38,3 +38,17 @@
 
 ### sell_product()
 Зменшує кількість товару після продажу.
+
+## Маршрути проєкту
+
+### Головна сторінка
+http://127.0.0.1:8000/
+
+### Product parameter
+http://127.0.0.1:8000/product/5/
+
+### Query string
+http://127.0.0.1:8000/search/?brand=Nivea
+
+### Redirect
+http://127.0.0.1:8000/shop/
