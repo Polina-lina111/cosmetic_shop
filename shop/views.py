@@ -3,10 +3,12 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
+from django.views.generic import TemplateView
 
 from datetime import datetime
 
 from .models import Product
+from .forms import ReviewForm
 
 def home_view(request):
     return HttpResponse("Головна сторінка магазину косметики")
@@ -86,5 +88,37 @@ def product_detail_view(request, pk):
     return render(
         request,
         "shop/product_detail.html",
+        context
+    )
+
+class AboutPageView(TemplateView):
+
+    template_name = "shop/about.html"
+
+
+def review_view(request):
+
+    if request.method == "POST":
+
+        form = ReviewForm(request.POST)
+
+        if form.is_valid():
+
+            return render(
+                request,
+                "shop/review_success.html"
+            )
+
+    else:
+
+        form = ReviewForm()
+
+    context = {
+        "form": form
+    }
+
+    return render(
+        request,
+        "shop/review_form.html",
         context
     )

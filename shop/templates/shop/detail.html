@@ -16,15 +16,17 @@
 <h3>Пов’язані товари</h3>
 
 <ul>
+
     {% for item in related_products %}
 
-    {% include "shop/includes/item_card.html" %}
+        <li>{{ item }}</li>
 
-{% empty %}
+    {% empty %}
 
-    <p>Нічого немає</p>
+        <li>Нічого немає</li>
 
-{% endfor %}
+    {% endfor %}
+
 </ul>
 
 {% endblock %}
