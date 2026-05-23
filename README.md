@@ -86,3 +86,17 @@ http://127.0.0.1:8000/shop/
 
 Якщо список порожній — виводиться:
 "Нічого немає"
+
+---
+
+## Template inheritance та static files
+
+У проєкті реалізовано:
+- базовий шаблон `base.html`;
+- успадкування шаблонів через `{% extends %}`;
+- блоки `{% block content %}`, `{% block extra_css %}`, `{% block extra_js %}`;
+- підключення static files через `{% static %}`;
+- окремий CSS-файл `style.css`;
+- окремий JavaScript-файл `main.js`;
+- підключення зображення косметики;
+- використання `include` для картки товару.
