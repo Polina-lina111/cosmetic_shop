@@ -1,16 +1,36 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
+
     <title>Cosmetic Shop</title>
+
+    <link rel="stylesheet" href="{% static 'shop/css/style.css' %}">
+
+    {% block extra_css %}
+    {% endblock %}
 </head>
+
 <body>
 
     <h1>Магазин косметики</h1>
 
+    <img
+        src="{% static 'shop/images/cosmetic.jpg' %}"
+        width="300"
+        alt="Cosmetics"
+    >
+
     <hr>
 
     {% block content %}
+    {% endblock %}
+
+    <script src="{% static 'shop/js/main.js' %}"></script>
+
+    {% block extra_js %}
     {% endblock %}
 
 </body>

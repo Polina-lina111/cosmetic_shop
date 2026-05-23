@@ -17,10 +17,14 @@
 
 <ul>
     {% for item in related_products %}
-        <li>{{ item }}</li>
-    {% empty %}
-        <li>Нічого немає</li>
-    {% endfor %}
+
+    {% include "shop/includes/item_card.html" %}
+
+{% empty %}
+
+    <p>Нічого немає</p>
+
+{% endfor %}
 </ul>
 
 {% endblock %}
