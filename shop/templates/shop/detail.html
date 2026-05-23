@@ -1,0 +1,26 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+
+<h2>{{ product.name|upper }}</h2>
+
+<p>
+    {{ product.description|truncatewords:5 }}
+</p>
+
+<p>
+    Дата створення:
+    {{ current_date|date:"d.m.Y" }}
+</p>
+
+<h3>Пов’язані товари</h3>
+
+<ul>
+    {% for item in related_products %}
+        <li>{{ item }}</li>
+    {% empty %}
+        <li>Нічого немає</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

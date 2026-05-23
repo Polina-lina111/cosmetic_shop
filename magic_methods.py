@@ -25,11 +25,16 @@ class CourseModule:
         return NotImplemented
 
     def __eq__(self, other):
-        return self.practice_tasks == other.practice_tasks
+        if isinstance(other, CourseModule):
+            return self.practice_tasks == other.practice_tasks
+
+        return NotImplemented
 
     def __lt__(self, other):
-        return self.duration_hours < other.duration_hours
+        if isinstance(other, CourseModule):
+            return self.duration_hours < other.duration_hours
 
+        return NotImplemented
 
 if __name__ == "__main__":
 

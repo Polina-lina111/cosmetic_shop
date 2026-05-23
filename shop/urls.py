@@ -5,6 +5,7 @@ from .views import (
     product_view,
     search_view,
     shop_redirect_view,
+    detail_view,
 )
 
 urlpatterns = [
@@ -15,4 +16,6 @@ urlpatterns = [
     path("search/", search_view, name="search"),
 
     path("shop/", shop_redirect_view, name="shop_redirect"),
+
+    path("detail/<int:pk>/", detail_view, name="detail"),
 ]
