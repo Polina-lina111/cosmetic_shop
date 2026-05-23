@@ -1,7 +1,12 @@
 from django.http import HttpResponse
+
 from django.shortcuts import redirect
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
+
 from datetime import datetime
+
+from .models import Product
 
 def home_view(request):
     return HttpResponse("Головна сторінка магазину косметики")
@@ -50,4 +55,36 @@ def detail_view(request, pk):
         request,
         "shop/detail.html",
         context,
+    )
+
+def product_list_view(request):
+
+    products = Product.objects.all()
+
+    context = {
+        "products": products
+    }
+
+    return render(
+        request,
+        "shop/product_list.html",
+        context
+    )
+
+
+def product_detail_view(request, pk):
+
+    product = get_object_or_404(
+        Product,
+        pk=pk
+    )
+
+    context = {
+        "product": product
+    }
+
+    return render(
+        request,
+        "shop/product_detail.html",
+        context
     )

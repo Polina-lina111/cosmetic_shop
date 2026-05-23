@@ -6,6 +6,8 @@ from .views import (
     search_view,
     shop_redirect_view,
     detail_view,
+    product_list_view,
+    product_detail_view,
 )
 
 urlpatterns = [
@@ -18,4 +20,8 @@ urlpatterns = [
     path("shop/", shop_redirect_view, name="shop_redirect"),
 
     path("detail/<int:pk>/", detail_view, name="detail"),
+
+    path("products/", product_list_view, name="product_list"),
+
+    path("products/<int:pk>/", product_detail_view, name="product_detail"),
 ]

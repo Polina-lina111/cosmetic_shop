@@ -1,0 +1,17 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+
+<h2>Список товарів</h2>
+
+{% for product in products %}
+
+    {% include "shop/includes/item_card.html" %}
+
+{% empty %}
+
+    <p>Товарів немає</p>
+
+{% endfor %}
+
+{% endblock %}
