@@ -4,8 +4,8 @@ from django.shortcuts import redirect
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView
+from django.contrib.auth.decorators import login_required
 
-from datetime import datetime
 
 from .models import Product
 from .forms import ReviewForm
@@ -29,35 +29,6 @@ def search_view(request):
 
 def shop_redirect_view(request):
     return redirect("home")
-
-def detail_view(request, pk):
-
-    product = {
-        "id": pk,
-        "name": "Face Cream",
-        "description": (
-            "Hydrating face cream for dry skin "
-            "with natural ingredients and vitamins"
-        ),
-    }
-
-    related_products = [
-        "Lipstick",
-        "Serum",
-        "Face Mask",
-    ]
-
-    context = {
-        "product": product,
-        "related_products": related_products,
-        "current_date": datetime.now(),
-    }
-
-    return render(
-        request,
-        "shop/detail.html",
-        context,
-    )
 
 def product_list_view(request):
 
@@ -121,4 +92,12 @@ def review_view(request):
         request,
         "shop/review_form.html",
         context
+    )
+
+@login_required
+def profile_view(request):
+
+    return render(
+        request,
+        "shop/profile.html",
     )

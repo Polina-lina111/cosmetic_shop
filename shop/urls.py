@@ -5,11 +5,11 @@ from .views import (
     product_view,
     search_view,
     shop_redirect_view,
-    detail_view,
     product_list_view,
     product_detail_view,
     AboutPageView,
     review_view,
+    profile_view,
 )
 
 urlpatterns = [
@@ -21,8 +21,6 @@ urlpatterns = [
 
     path("shop/", shop_redirect_view, name="shop_redirect"),
 
-    path("detail/<int:pk>/", detail_view, name="detail"),
-
     path("products/", product_list_view, name="product_list"),
 
     path("products/<int:pk>/", product_detail_view, name="product_detail"),
@@ -30,4 +28,6 @@ urlpatterns = [
     path("about/", AboutPageView.as_view(), name="about"),
 
     path("review/", review_view, name="review"),
+
+    path("profile/", profile_view, name="profile",),
 ]
