@@ -6,6 +6,10 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
+
+from django.shortcuts import get_object_or_404
 
 from .models import Product
 from .forms import ReviewForm
@@ -100,4 +104,46 @@ def profile_view(request):
     return render(
         request,
         "shop/profile.html",
+    )
+
+
+@login_required
+def manager_dashboard_view(request):
+
+    profile = request.user.profile
+
+    if profile.role != "manager":
+        return HttpResponseForbidden(
+            "У вас немає доступу до цієї сторінки"
+        )
+
+    products = Product.objects.filter(
+        owner=request.user
+    )
+
+    context = {
+        "products": products,
+    }
+
+    return render(
+        request,
+        "shop/manager_dashboard.html",
+        context,
+    )
+
+@login_required
+def edit_product_view(request, pk):
+
+    product = get_object_or_404(
+        Product,
+        pk=pk
+    )
+
+    if product.owner != request.user:
+        return HttpResponseForbidden(
+            "Ви не можете редагувати чужий товар"
+        )
+
+    return HttpResponse(
+        f"Редагування товару: {product.title}"
     )

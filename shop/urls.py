@@ -10,6 +10,8 @@ from .views import (
     AboutPageView,
     review_view,
     profile_view,
+    manager_dashboard_view,
+    edit_product_view,
 )
 
 urlpatterns = [
@@ -30,4 +32,8 @@ urlpatterns = [
     path("review/", review_view, name="review"),
 
     path("profile/", profile_view, name="profile",),
+
+    path("manager-dashboard/", manager_dashboard_view, name="manager_dashboard"),
+
+    path("product/<int:pk>/edit/", edit_product_view, name="edit_product"),
 ]

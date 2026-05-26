@@ -1,0 +1,29 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+
+<h2>Панель менеджера</h2>
+
+{% if products %}
+
+    <ul>
+
+        {% for product in products %}
+
+            <li>
+                {{ product.title }}
+                —
+                {{ product.brand }}
+            </li>
+
+        {% endfor %}
+
+    </ul>
+
+{% else %}
+
+    <p>У вас немає товарів</p>
+
+{% endif %}
+
+{% endblock %}
