@@ -8,6 +8,8 @@ from .views import (
     detail_view,
     product_list_view,
     product_detail_view,
+    AboutPageView,
+    review_view,
 )
 
 urlpatterns = [
@@ -24,4 +26,8 @@ urlpatterns = [
     path("products/", product_list_view, name="product_list"),
 
     path("products/<int:pk>/", product_detail_view, name="product_detail"),
+
+    path("about/", AboutPageView.as_view(), name="about"),
+
+    path("review/", review_view, name="review"),
 ]
