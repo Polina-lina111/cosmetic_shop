@@ -16,4 +16,30 @@
 
 </form>
 
+<hr>
+
+<h2>Відгуки користувачів</h2>
+
+{% for review in reviews %}
+
+    <div class="product-card">
+
+        <h3>{{ review.username }}</h3>
+
+        <p>
+            Оцінка: {{ review.rating }}/5
+        </p>
+
+        <p>
+            {{ review.message }}
+        </p>
+
+    </div>
+
+{% empty %}
+
+    <p>Відгуків поки немає.</p>
+
+{% endfor %}
+
 {% endblock %}

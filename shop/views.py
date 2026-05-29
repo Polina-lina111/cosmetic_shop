@@ -2,16 +2,14 @@ from django.http import HttpResponse
 
 from django.shortcuts import redirect
 from django.shortcuts import render
-from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView
-from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 
 from django.shortcuts import get_object_or_404
 
-from .models import Product
+from .models import Product, Review
 from .forms import ReviewForm
 
 def home_view(request):
@@ -79,6 +77,12 @@ def review_view(request):
 
         if form.is_valid():
 
+            Review.objects.create(
+                username=form.cleaned_data["username"],
+                message=form.cleaned_data["message"],
+                rating=form.cleaned_data["rating"],
+            )
+
             return render(
                 request,
                 "shop/review_success.html"
@@ -88,8 +92,11 @@ def review_view(request):
 
         form = ReviewForm()
 
+    reviews = Review.objects.all().order_by("-created_at")
+
     context = {
-        "form": form
+        "form": form,
+        "reviews": reviews,
     }
 
     return render(

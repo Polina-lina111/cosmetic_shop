@@ -4,14 +4,18 @@
 
 <h2>Список товарів</h2>
 
-{% for product in products %}
+<div class="products-grid">
 
-    {% include "shop/includes/item_card.html" %}
+    {% for product in products %}
 
-{% empty %}
+        {% include "shop/includes/item_card.html" %}
 
-    <p>Товарів немає</p>
+    {% empty %}
 
-{% endfor %}
+        <p>Товарів немає</p>
+
+    {% endfor %}
+
+</div>
 
 {% endblock %}

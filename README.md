@@ -39,20 +39,6 @@
 ### sell_product()
 Зменшує кількість товару після продажу.
 
-## Маршрути проєкту
-
-### Головна сторінка
-http://127.0.0.1:8000/
-
-### Product parameter
-http://127.0.0.1:8000/product/5/
-
-### Query string
-http://127.0.0.1:8000/search/?brand=Nivea
-
-### Redirect
-http://127.0.0.1:8000/shop/
-
 ---
 
 ## Templates та detail view
@@ -120,11 +106,6 @@ http://127.0.0.1:8000/shop/
 - реєстрація моделі в Django Admin;
 - створення тестових записів через admin panel.
 
-### Приклади товарів
-- Nivea Cream
-- Matte Lipstick
-- Face Serum
-
 ---
 
 ## ORM та зв'язки моделей
@@ -167,14 +148,6 @@ Product.objects.all()
 Перевіряється:
 - мінімальна довжина відгуку;
 - коректність рейтингу.
-
-### Нові маршрути
-
-About page:
-http://127.0.0.1:8000/about/
-
-Review form:
-http://127.0.0.1:8000/review/
 
 ## Авторизація та форми
 
