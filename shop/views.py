@@ -12,6 +12,11 @@ from django.shortcuts import get_object_or_404
 from .models import Product, Review
 from .forms import ReviewForm
 
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+
+from .serializers import ProductSerializer
+
 def home_view(request):
     return HttpResponse("Головна сторінка магазину косметики")
 
@@ -154,3 +159,17 @@ def edit_product_view(request, pk):
     return HttpResponse(
         f"Редагування товару: {product.title}"
     )
+
+
+
+@api_view(["GET"])
+def product_api_view(request):
+
+    products = Product.objects.all()
+
+    serializer = ProductSerializer(
+        products,
+        many=True
+    )
+
+    return Response(serializer.data)

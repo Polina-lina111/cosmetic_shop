@@ -1,4 +1,5 @@
 from django.urls import path
+from .views import product_api_view
 
 from .views import (
     home_view,
@@ -12,6 +13,7 @@ from .views import (
     profile_view,
     manager_dashboard_view,
     edit_product_view,
+
 )
 
 urlpatterns = [
@@ -36,4 +38,6 @@ urlpatterns = [
     path("manager-dashboard/", manager_dashboard_view, name="manager_dashboard"),
 
     path("product/<int:pk>/edit/", edit_product_view, name="edit_product"),
+
+    path("api/products/", product_api_view, name="product_api"),
 ]
